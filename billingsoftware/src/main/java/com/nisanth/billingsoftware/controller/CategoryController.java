@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("categories")
+@RequestMapping("/api/v1.0/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
@@ -40,6 +40,7 @@ public class CategoryController {
     }
 
     // Get all categories
+
     @GetMapping
     public List<CategoryResponse> fetchCategories()
     {
