@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
+    const[auth,setAuth]=useState({token:null,role:null})
 
     useEffect(() => {
          async function loadData() {
@@ -21,8 +22,20 @@ export const AppContextProvider = ({ children }) => {
         loadData();
     }, []);
 
+    const setAuthData=(token,role)=>{
+        setAuth({token,role})
+    }
+
+    const contextvalue={
+        categories,
+        setCategories,
+        auth,
+        setAuthData
+
+    }
+
     return (
-        <AppContext.Provider value={{ categories, setCategories }}>
+        <AppContext.Provider value={contextvalue}>
             {children}
         </AppContext.Provider>
     );
