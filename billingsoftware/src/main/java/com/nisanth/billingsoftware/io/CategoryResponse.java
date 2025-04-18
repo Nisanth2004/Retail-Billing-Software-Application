@@ -16,5 +16,6 @@ public class CategoryResponse {
     private String name;
     private String description;
     private String bgColor;
+    private Integer items;
 
 }

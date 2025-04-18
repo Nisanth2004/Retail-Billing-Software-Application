@@ -40,7 +40,7 @@ public class CategoryController {
 
     // Get all categories
 
-    @GetMapping
+    @GetMapping("/categories")
     public List<CategoryResponse> fetchCategories()
     {
         return categoryService.read();

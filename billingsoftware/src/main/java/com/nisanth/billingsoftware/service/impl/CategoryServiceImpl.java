@@ -4,6 +4,7 @@ import com.nisanth.billingsoftware.entity.CategoryEntity;
 import com.nisanth.billingsoftware.io.CategoryRequest;
 import com.nisanth.billingsoftware.io.CategoryResponse;
 import com.nisanth.billingsoftware.repository.CategoryRepository;
+import com.nisanth.billingsoftware.repository.ItemRepository;
 import com.nisanth.billingsoftware.service.CategoryService;
 import com.nisanth.billingsoftware.service.FileUploadService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final FileUploadService fileUploadService;
+    private final ItemRepository itemRepository;
     @Override
     public CategoryResponse add(CategoryRequest request, MultipartFile file) {
 
@@ -51,6 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private CategoryResponse convertToResponse(CategoryEntity newCategory) {
+        Integer itemsCount=itemRepository.countByCategoryId(newCategory.getId());
        return CategoryResponse.builder()
                 .categoryId(newCategory.getCategoryId())
                 .name(newCategory.getName())
@@ -59,6 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .imgUrl(newCategory.getImgUrl())
                 .createdAt(newCategory.getCreatedAt())
                 .updatedAt(newCategory.getUpdatedAt())
+               .items(itemsCount)
                 .build();
     }
 
