@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Explore.css'
+import { AppContext } from '../../context/AppContext'
 const Explore = () => {
+
+  const {categories}=useContext(AppContext);
+  console.log(categories);
   return (
    <div className="explore-container text-light">
     <div className="left-column">
@@ -21,15 +25,20 @@ const Explore = () => {
       </div>
       <hr className='my-3 text-light'/>
 
-      <div className="cart-items-container" style={{height:'55%',overflowY:'auto'}} ></div>
-      cart items
-    </div>
+      <div className="cart-items-container" style={{height:'55%',overflowY:'auto'}} >
 
-    <div className="card-summary-container"  style={{height:'30%'}}>
+      cart items
+      </div>
+      
+     
+
+    <div className="cart-summary-container"  style={{height:'30%'}}>
       cart summary
 
     </div>
    </div>
+   </div>
+   
   )
 }
 
