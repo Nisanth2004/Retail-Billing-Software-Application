@@ -19,7 +19,7 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @PostMapping("/admin")
+    @PostMapping("/admin/items")
     @ResponseStatus(HttpStatus.CREATED)
     public ItemResponse addItem(@RequestPart("item")String itemString, @RequestPart("file")MultipartFile file)
     {
