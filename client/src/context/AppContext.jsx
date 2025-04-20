@@ -33,6 +33,10 @@ export const AppContextProvider = ({ children }) => {
 
     }
 
+    const clearCart=()=>{
+        setCartItems([])
+    }
+
     const updateQuantity=(itemId,newQuantity)=>{
         setCartItems(cartItems.map(item=>item.itemId === itemId ? {...item,quantity:newQuantity}:item))
 
@@ -75,7 +79,8 @@ export const AppContextProvider = ({ children }) => {
         addToCart,
         cartItems,
         removeFromCart,
-        updateQuantity
+        updateQuantity,
+        clearCart
 
     }
 
