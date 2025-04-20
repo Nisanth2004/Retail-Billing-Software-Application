@@ -98,7 +98,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderResponse> findRecentOrders() {
-        return orderEntityRepository.findRecentOrders(PageRequest.of(0,5))
+        return orderEntityRepository.findRecentOrders(PageRequest.of(0,10))
                 .stream()
                 .map(orderEntity -> convertToResponse(orderEntity))
                 .collect(Collectors.toList());
