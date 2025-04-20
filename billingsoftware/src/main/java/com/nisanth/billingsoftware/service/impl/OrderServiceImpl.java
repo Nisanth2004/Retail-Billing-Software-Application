@@ -2,10 +2,7 @@ package com.nisanth.billingsoftware.service.impl;
 
 import com.nisanth.billingsoftware.entity.OrderEntity;
 import com.nisanth.billingsoftware.entity.OrderItemEntity;
-import com.nisanth.billingsoftware.io.OrderRequest;
-import com.nisanth.billingsoftware.io.OrderResponse;
-import com.nisanth.billingsoftware.io.PaymentDetails;
-import com.nisanth.billingsoftware.io.PaymentMethod;
+import com.nisanth.billingsoftware.io.*;
 import com.nisanth.billingsoftware.repository.OrderEntityRepository;
 import com.nisanth.billingsoftware.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +56,36 @@ public class OrderServiceImpl implements OrderService {
                 .map(this::convertToResponse)
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    public OrderResponse verifyPayment(PaymentVerificationRequest request) {
+
+        // get the existing order
+       OrderEntity existingOrder= orderEntityRepository.findByOrderId(request.getOrderId())
+                .orElseThrow(()->new RuntimeException("Order Not found"));
+
+       if(!verifyRazorpaySignature(request.getRazorpayOrderId(),
+               request.getRazorpayPaymentId(),
+               request.getRazorpaySignature()))
+       {
+           throw new RuntimeException("Payment verification failed");
+           
+       }
+
+       PaymentDetails paymentDetails=existingOrder.getPaymentDetails();
+       paymentDetails.setRazorpayOrderId(request.getRazorpayOrderId());
+       paymentDetails.setRazorpayPaymentId(request.getRazorpayPaymentId());
+       paymentDetails.setRazorpaySignature(request.getRazorpaySignature());
+       paymentDetails.setStatus(PaymentDetails.PaymentStatus.COMPLETED);
+       existingOrder=orderEntityRepository.save(existingOrder);
+
+        return convertToResponse(existingOrder);
+    }
+
+    private boolean verifyRazorpaySignature(String razorpayOrderId, String razorpayPaymentId, String razorpaySignature) {
+
+      return true;
     }
 
     private OrderResponse convertToResponse(OrderEntity newOrder) {
