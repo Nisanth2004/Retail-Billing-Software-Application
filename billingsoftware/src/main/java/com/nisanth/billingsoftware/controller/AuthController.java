@@ -41,7 +41,7 @@ public class AuthController {
 
         // jwt utils
        final String jwtToken= jwtUtil.generateToken(userDetails);
-       // TODO : fetch the role from repository
+       //  fetch the role from repository
        String role= userService.getUserRole(request.getEmail());
        return new AuthResponse(request.getEmail(),jwtToken,role);
 
