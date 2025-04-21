@@ -59,6 +59,7 @@ const UserForm = ({setUsers}) => {
                                placeholder='John Doe'
                                onChange={onChangeHandler}
                                value={data.name}
+                               required
                                />
 
                     </div>
@@ -71,6 +72,7 @@ const UserForm = ({setUsers}) => {
                                placeholder='yourname@example.com'
                                onChange={onChangeHandler}
                                value={data.email}
+                               required
                                />
 
                     </div>
@@ -83,6 +85,7 @@ const UserForm = ({setUsers}) => {
                                placeholder='*******'
                                onChange={onChangeHandler}
                                value={data.password}
+                               required
                                />
 
                     </div>

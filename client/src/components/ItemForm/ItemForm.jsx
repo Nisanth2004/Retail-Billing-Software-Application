@@ -96,11 +96,12 @@ const ItemForm = () => {
                                placeholder='Item Name'
                                onChange={onChangeHandler}
                                value={data.name}
+                               required
                                />
 
                     </div>
                      <div className="mb-3">
-                        <label htmlFor="category" className="form-label">Category</label>
+                        <label htmlFor="category" required className="form-label">Category</label>
                         <select name="categoryId" id="category" className="form-control"
                         onChange={onChangeHandler}
                         value={data.categoryId}>
@@ -114,7 +115,7 @@ const ItemForm = () => {
                      </div>
 
                      <div className="mb-3">
-                        <label htmlFor="price" className='form-label'>Price</label>
+                        <label htmlFor="price" required className='form-label'>Price</label>
                         <input type="number" name="price" id="price" 
                         className='form-control'
                         onChange={onChangeHandler}
@@ -122,7 +123,7 @@ const ItemForm = () => {
                         placeholder='&#8377;200' />
                      </div>
                     <div className="mb-3">
-                        <label htmlFor="description" className='form-label'>Description</label>
+                        <label htmlFor="description"  className='form-label'>Description</label>
                         <textarea 
                               rows={5}
                                name='description'

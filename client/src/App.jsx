@@ -11,6 +11,7 @@ import Login from './pages/Login/Login'
 import OrderHistory from './pages/OrderHistory/OrderHistory'
 import { AppContext } from './context/AppContext'
 import { all } from 'axios'
+import Notfound from './pages/Notfound/Notfound'
 
 const App = () => {
 
@@ -58,6 +59,10 @@ const App = () => {
         
       
         <Route path='/orders' element={<OrderHistory/>}/>
+
+        <Route path='*' element={<Notfound/>}/>
+
+
       </Routes>
     </div>
   )

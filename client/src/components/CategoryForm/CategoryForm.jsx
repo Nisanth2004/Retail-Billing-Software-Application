@@ -92,6 +92,7 @@ const CategoryForm = () => {
                                placeholder='Category Name'
                                onChange={onChangeHandler}
                                value={data.name}
+                               required
                                />
 
                     </div>
@@ -111,7 +112,7 @@ const CategoryForm = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="bgcolor" className='form-label'>Background color</label>
+                        <label htmlFor="bgcolor"  className='form-label'>Background color</label>
                         <br/>
                         <input 
                         type='color' 

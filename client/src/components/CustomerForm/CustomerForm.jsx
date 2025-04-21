@@ -9,6 +9,7 @@ const CustomerForm = ({customerName,mobileNumber,setMobileNumber,setCustomerName
         <input type='text' className='form-control form-control-sm'
         onChange={(e)=>setCustomerName(e.target.value)}
         value={customerName}
+        
         id='customerName'></input>
 
       </div>
@@ -20,6 +21,7 @@ const CustomerForm = ({customerName,mobileNumber,setMobileNumber,setCustomerName
         <input type='text' className='form-control form-control-sm' 
         onChange={(e)=>setMobileNumber(e.target.value)}
         value={mobileNumber}
+        
         id='mobileNumber'></input>
 
       </div>
