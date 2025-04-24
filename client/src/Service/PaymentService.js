@@ -1,10 +1,16 @@
 import axios from "axios";
 
-export const createRazorpayOrder=async(data)=>{
-   return await axios.post("http://localhost:8080/api/v1.0/payments/create-order",data,{headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}})
-}
+const API_URL = 'https://billing-enef.onrender.com';
+const AUTH_HEADER = {
+  headers: {
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  }
+};
 
-export const verifyPayment=async(paymentData)=>{
-    return await axios.post("http://localhost:8080/api/v1.0/payments/verify",paymentData,{headers:{'Authorization':`Bearer ${localStorage.getItem('token')}`}})
+export const createRazorpayOrder = async (data) => {
+  return await axios.post(`${API_URL}/payments/create-order`, data, AUTH_HEADER);
+};
 
-}
+export const verifyPayment = async (paymentData) => {
+  return await axios.post(`${API_URL}/payments/verify`, paymentData, AUTH_HEADER);
+};

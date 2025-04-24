@@ -1,5 +1,7 @@
 import axios from 'axios';
 
-export const login=async(data)=>{
-    return await axios.post('http://localhost:8080/api/v1.0/login',data)
-} 
+const API_URL = 'https://billing-enef.onrender.com';
+
+export const login = async (data) => {
+  return await axios.post(`${API_URL}/login`, data);
+};
