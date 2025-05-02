@@ -3,6 +3,10 @@
 A full-stack **Retail Billing System** built with **Spring Boot (Backend)** and **React (Frontend)**. This project simulates a real-world supermarket or retail store billing experience with product management, secure login, order tracking, and online payments.
 
 
+# You can try my app here
+    https://sn-just-billing-software.netlify.app
+
+
 ## ✨ Features Implemented
 
 - ✅ Category & Item Management (CRUD)
